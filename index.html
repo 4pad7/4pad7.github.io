@@ -1,23 +1,125 @@
 <!DOCTYPE HTML>
 <html>
+
     <head>
         <meta charset = "utf-8">
         <title>新年好運到</title>
+
         <style type = "text/css">
             body{
                 background-color: darkred;
                 font-family: Helvetica, "Microsoft YaHei", "LiHei Pro", TW-Kai;
+                text-align: center;
+                overflow: hidden;
             }
             div{
-                color: white;
-                font-size: 20px;
-                font-weight: bold;
-                width: 100%;
                 text-align: center;
             }
+            .startDiv{
+                width: 70%;
+                background-color:brown;
+                position: absolute;
+                color: white;
+                font-size: 30px;
+                font-weight: bold;
+                text-align: center;
+                left:40px;
+            }
+            .startBtnDiv{
+                font-weight: bold;
+                position: absolute;
+                right: 150px;
+                bottom: 150px;
+                width: 70px;
+                height: 40px;
+                border:salmon;
+                border-style: solid;
+                border-radius: 10px;
+                color: white;
+                background-color:tomato;
+                font-size: 16px;
+            }
+
         </style>
+
+        <script>
+
+            var str;
+
+            //進入網頁的一開始
+            function start(){
+                var button = document.getElementById("startbutton");
+                document.getElementById('demo').play();
+                button.addEventListener("click", Question_1, false);
+            }
+
+            //問老媽的第一個問題
+            function Question_1(){
+                var questionTitle = document.getElementById("questionTitle");
+                questionTitle.innerHTML = "<p>我想問問妳，在2019年裡，</p>" + "<img src='picQ1.jpg' width='300px'>" +
+                                          "<p>妳是否都有常常想起可愛的女兒呢？</p>" +
+                                          "<p>妳是否會擔心她在外餓肚子呢？(結果她吃胖超多)</p>" +
+                                          "<p>如果有的話 那麼......</p>";
+
+                var button = document.getElementById("startbutton");
+                button.addEventListener("click", Question_2, false);
+            }
+
+            function Question_2(){
+                var questionTitle = document.getElementById("questionTitle");
+                questionTitle.innerHTML = "<p>她要告訴妳 她也很想妳喔！</p>" +
+                                          "<p>祝我最愛的老媽 新年快樂 <3</p>" +
+                                          "<img src='合照1.jpg' width='300px'>" +
+                                          "<img src='合照2.jpg' width='300px'>" +
+                                          "<img src='合照3.jpg' width='300px'><p>" ;
+                
+                var button = document.getElementById("startbutton");
+                document.getElementById("startbutton").value="restart";
+                button.addEventListener("click", reloadPage, false);
+            }
+
+            function reloadPage(){
+                window.location.reload();
+            }
+
+            window.addEventListener("load", start, false);
+        </script>
+
     </head>
-    <body>
-        <div><br>哈囉你好嗎</div>
+
+    <body onselectstart="return false">
+
+        <br>
+        <!--問題視窗位置-->
+        <div class="startDiv" id="questionTitle">
+            <br>
+            <br>
+                您收到了來自小天使沛淇的紅包！祝您2020年快樂！
+            <br>
+            <br>
+                <img src="首頁通知圖.jpg" width="250px">
+            <br>
+            <br>
+            <br>
+        </div>
+
+
+        <!--btn位置-->
+        <div id="btn">
+            <input type="button" id="startbutton" value="skip" class="startBtnDiv">
+        </div>
+
+        <!--音樂播放-->
+        <video id="demo" autoplay="autoplay" loop="true" width="1px" height="1px">
+            <source src="李思雨 - 每一句都很甜「我想和你一起走數遍所有的星星」動態歌詞版.mp3" type="video/mp4" />
+        </video>
+
+        <div id="buttonbar">
+            <input type="button" id="play" value="►" onclick="document.getElementById('demo').play()">
+            <input type="button" id="pause" value="❚❚" onclick="document.getElementById('demo').pause()">
+            <input type="button" id="volumeUp" value="+" onclick="document.getElementById('demo').volume+=0.1" style="font-weight:bolder;">
+            <input type="button" id="volumeDown" value="-" onclick="document.getElementById('demo').volume-=0.1" style="font-weight:bolder;">
+        </div>
+
     </body>
 </html>
